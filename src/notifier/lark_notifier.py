@@ -1,9 +1,10 @@
 import os
 import json
 from typing import List, Dict
-from lark_oapi.api.bot.v1 import *
-from lark_oapi import JSON
-from ..utils.logger import get_logger
+from lark_oapi.api.im.v1 import CreateMessageRequest, CreateMessageRequestBody, Message
+from lark_oapi.api.auth.v3 import InternalTenantAccessTokenRequest
+from lark_oapi import Client
+from utils.logger import get_logger
 
 class LarkNotifier:
     """飞书通知器"""
@@ -37,12 +38,10 @@ class LarkNotifier:
     
     def _get_access_token(self):
         """获取访问令牌"""
-        from lark_oapi.api.auth.v3 import *
-        
         client = Client(self.app_id, self.app_secret)
-        request = GetAccessTokenRequest()
+        request = InternalTenantAccessTokenRequest()
         
-        response = client.auth.v3.tenant_access_token.internal_get(request)
+        response = client.auth.v3.tenant_access_token.internal(request)
         
         if response.code == 0:
             self.access_token = response.tenant_access_token
@@ -52,12 +51,15 @@ class LarkNotifier:
     def _send_message(self, message: str):
         """发送文本消息"""
         client = Client(self.app_id, self.app_secret)
-        request = SendTextRequest()
-        request.user_id = self.user_id
-        request.msg_type = 'text'
-        request.content = json.dumps({'text': message})
+        client.auth.v3.tenant_access_token.internal_set(self.access_token)
         
-        response = client.message.v4.user_message.send(request)
+        request = CreateMessageRequest()
+        request.receive_id_type = "open_id"
+        request.receive_id = self.user_id
+        request.msg_type = "text"
+        request.content = json.dumps({"text": message})
+        
+        response = client.im.v1.message.create(request)
         
         if response.code != 0:
             raise Exception(f"Failed to send message: {response.msg}")
@@ -65,12 +67,15 @@ class LarkNotifier:
     def _send_card_message(self, card_content: dict):
         """发送卡片消息"""
         client = Client(self.app_id, self.app_secret)
-        request = SendInteractiveRequest()
-        request.user_id = self.user_id
-        request.msg_type = 'interactive'
-        request.card = card_content
+        client.auth.v3.tenant_access_token.internal_set(self.access_token)
         
-        response = client.message.v4.user_message.send(request)
+        request = CreateMessageRequest()
+        request.receive_id_type = "open_id"
+        request.receive_id = self.user_id
+        request.msg_type = "interactive"
+        request.content = json.dumps(card_content)
+        
+        response = client.im.v1.message.create(request)
         
         if response.code != 0:
             raise Exception(f"Failed to send card message: {response.msg}")
@@ -81,7 +86,7 @@ class LarkNotifier:
             {
                 "tag": "div",
                 "text": {
-                    "content": f"📊 今日安全文章日报（共 {len(articles)} 篇）",
+                    "content": f"今日安全文章日报（共 {len(articles)} 篇）",
                     "tag": "lark_md"
                 }
             },
@@ -110,7 +115,7 @@ class LarkNotifier:
                 elements.append({
                     "tag": "div",
                     "text": {
-                        "content": f"📁 分类: {category}",
+                        "content": f"分类: {category}",
                         "tag": "lark_md"
                     }
                 })
@@ -120,7 +125,7 @@ class LarkNotifier:
                 elements.append({
                     "tag": "div",
                     "text": {
-                        "content": f"📝 {summary}",
+                        "content": f"摘要: {summary}",
                         "tag": "lark_md"
                     }
                 })
@@ -132,7 +137,7 @@ class LarkNotifier:
                 elements.append({
                     "tag": "div",
                     "text": {
-                        "content": f"🎯 关键点:\n{points_text}",
+                        "content": f"关键点:\n{points_text}",
                         "tag": "lark_md"
                     }
                 })
@@ -167,7 +172,7 @@ class LarkNotifier:
             "header": {
                 "template": "blue",
                 "title": {
-                    "content": "🛡️ SDL 安全日报",
+                    "content": "SDL 安全日报",
                     "tag": "plain_text"
                 }
             },

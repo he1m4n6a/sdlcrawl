@@ -1,7 +1,7 @@
 import os
 from typing import Dict, List
 from openai import OpenAI
-from ..utils.logger import get_logger
+from utils.logger import get_logger
 
 class AITranslator:
     """AI 翻译器"""

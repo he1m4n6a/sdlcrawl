@@ -1,0 +1,29 @@
+[
+  {
+    "source": "PortSwigger Blog",
+    "category": "Web Security",
+    "title": "How I sped up exploit validation in Repeater using Burp AI",
+    "link": "https://portswigger.net/blog/how-i-sped-up-exploit-validation-in-repeater-using-burp-ai",
+    "published": "Thu, 22 Jan 2026 15:18:00 GMT",
+    "content": "Note: This is a guest post by IT security consultant&nbsp;Adarsh Kumar. I’ve been using Burp Suite day to day for years, so when Burp AI was introduced, I was curious how it would actually hold up dur",
+    "fetched_at": "2026-02-05T12:21:55.282292"
+  },
+  {
+    "source": "PortSwigger Blog",
+    "category": "Web Security",
+    "title": "Functional PoCs in less than a minute? Julen Garrido Estévez puts Burp AI to the test",
+    "link": "https://portswigger.net/blog/functional-pocs-in-less-than-a-minute",
+    "published": "Fri, 16 Jan 2026 00:00:00 GMT",
+    "content": "Note: This is a guest post by pentester&nbsp;Julen Garrido Estévez&nbsp;(@b3xal). Methodology Key results Examples Key learnings Prompt template A pentester's POV on Burp AI Pentester Julen Garrido Es",
+    "fetched_at": "2026-02-05T12:21:55.282325"
+  },
+  {
+    "source": "PortSwigger Blog",
+    "category": "Web Security",
+    "title": "DAST without disruption: Burp Suite DAST winter update 2025",
+    "link": "https://portswigger.net/blog/burp-suite-dast-winter-update-2025",
+    "published": "Thu, 11 Dec 2025 13:09:30 GMT",
+    "content": "AppSec teams are under constant pressure to secure fast-moving applications without slowing anything down. But scanning windows, fragile authentication, and sprawling API estates often get in the way",
+    "fetched_at": "2026-02-05T12:21:55.282333"
+  }
+]

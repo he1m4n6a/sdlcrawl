@@ -5,6 +5,8 @@ import json
 from datetime import datetime
 from dotenv import load_dotenv
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from crawler.article_fetcher import ArticleFetcher
 from translator.ai_translator import AITranslator
 from notifier.lark_notifier import LarkNotifier

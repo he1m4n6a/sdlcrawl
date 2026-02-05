@@ -1,0 +1,47 @@
+[
+  {
+    "source": "PortSwigger Blog",
+    "category": "Web Security",
+    "title": "How I sped up exploit validation in Repeater using Burp AI",
+    "link": "https://portswigger.net/blog/how-i-sped-up-exploit-validation-in-repeater-using-burp-ai",
+    "published": "Thu, 22 Jan 2026 15:18:00 GMT",
+    "content": "Note: This is a guest post by IT security consultant&nbsp;Adarsh Kumar. I’ve been using Burp Suite day to day for years, so when Burp AI was introduced, I was curious how it would actually hold up dur",
+    "fetched_at": "2026-02-05T12:01:29.410504"
+  },
+  {
+    "source": "PortSwigger Blog",
+    "category": "Web Security",
+    "title": "Functional PoCs in less than a minute? Julen Garrido Estévez puts Burp AI to the test",
+    "link": "https://portswigger.net/blog/functional-pocs-in-less-than-a-minute",
+    "published": "Fri, 16 Jan 2026 00:00:00 GMT",
+    "content": "Note: This is a guest post by pentester&nbsp;Julen Garrido Estévez&nbsp;(@b3xal). Methodology Key results Examples Key learnings Prompt template A pentester's POV on Burp AI Pentester Julen Garrido Es",
+    "fetched_at": "2026-02-05T12:01:29.410522"
+  },
+  {
+    "source": "PortSwigger Blog",
+    "category": "Web Security",
+    "title": "DAST without disruption: Burp Suite DAST winter update 2025",
+    "link": "https://portswigger.net/blog/burp-suite-dast-winter-update-2025",
+    "published": "Thu, 11 Dec 2025 13:09:30 GMT",
+    "content": "AppSec teams are under constant pressure to secure fast-moving applications without slowing anything down. But scanning windows, fragile authentication, and sprawling API estates often get in the way",
+    "fetched_at": "2026-02-05T12:01:29.410531"
+  },
+  {
+    "source": "PortSwigger Blog",
+    "category": "Web Security",
+    "title": "How to detect React2Shell with Burp Suite",
+    "link": "https://portswigger.net/blog/how-to-detect-react2shell-with-burp-suite",
+    "published": "Fri, 05 Dec 2025 13:53:30 GMT",
+    "content": "Detecting React2Shell with Burp Suite Two new critical vulnerabilities, collectively known as React2Shell (CVE-2025-55182 and CVE-2025-66478), are rapidly gaining traction in the security community. D",
+    "fetched_at": "2026-02-05T12:01:29.410535"
+  },
+  {
+    "source": "PortSwigger Blog",
+    "category": "Web Security",
+    "title": "PortSwigger x TryHackMe: Supporting Advent of Cyber",
+    "link": "https://portswigger.net/blog/portswigger-x-tryhackme-supporting-advent-of-cyber",
+    "published": "Mon, 01 Dec 2025 09:00:00 GMT",
+    "content": "Every December, TryHackMe’s Advent of Cyber brings the security community together around a simple idea: learn something new by getting hands-on. Each day during the festive season reveals a beginner-",
+    "fetched_at": "2026-02-05T12:01:29.410539"
+  }
+]
