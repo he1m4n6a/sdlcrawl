@@ -12,9 +12,9 @@ lark_config:
 # AI Settings
 openai_config:
   api_key: ""
-  base_url: "" # Please update this if using a custom provider
+  base_url: "" # Custom provider endpoint
   model: "gpt-5.2-chat-latest"
-  temperature: 0.7
+  temperature: 0.1
   max_tokens: 1000
 
 # Crawler Settings
