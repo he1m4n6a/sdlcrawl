@@ -2,28 +2,10 @@
 
 # 国际安全博客和媒体
 sources:
-  # 主流安全博客
-  - name: "OWASP Blog"
-    type: "rss"
-    url: "https://owasp.org/blog/feed/"
-    category: "SDL"
-    enabled: true
-
-  - name: "PortSwigger Blog"
-    type: "rss"
-    url: "https://portswigger.net/blog/rss"
-    category: "Web Security"
-    enabled: true
-
+  # High Quality General Security
   - name: "The Hacker News"
     type: "rss"
     url: "https://thehackernews.com/feeds/posts/default"
-    category: "General"
-    enabled: true
-
-  - name: "Krebs on Security"
-    type: "rss"
-    url: "https://krebsonsecurity.com/feed/"
     category: "General"
     enabled: true
 
@@ -45,29 +27,36 @@ sources:
     category: "General"
     enabled: true
 
-  - name: "The Register Security"
+  # Technical & Research
+  - name: "Krebs on Security"
     type: "rss"
-    url: "https://www.theregister.com/security/headlines.atom"
-    category: "General"
+    url: "https://krebsonsecurity.com/feed/"
+    category: "Investigative"
     enabled: true
 
-  - name: "Threatpost"
+  - name: "Schneier on Security"
     type: "rss"
-    url: "https://threatpost.com/feed"
-    category: "General"
+    url: "https://www.schneier.com/feed/atom/"
+    category: "Security Engineering"
     enabled: true
 
-  # 企业安全博客
+  - name: "SANS Internet Storm Center"
+    type: "rss"
+    url: "https://isc.sans.edu/rssfeed.xml"
+    category: "Threat Intelligence"
+    enabled: true
+
+  # Corporate & Cloud Security Blogs
   - name: "Google Security Blog"
     type: "rss"
     url: "https://security.googleblog.com/feeds/posts/default"
-    category: "SDL"
+    category: "AppSec"
     enabled: true
 
   - name: "Microsoft Security Blog"
     type: "rss"
     url: "https://www.microsoft.com/en-us/security/blog/feed/"
-    category: "SDL"
+    category: "AppSec"
     enabled: true
 
   - name: "AWS Security Blog"
@@ -76,59 +65,35 @@ sources:
     category: "Cloud Security"
     enabled: true
 
-  - name: "GitHub Security Lab"
+  - name: "Cloudflare Blog"
     type: "rss"
-    url: "https://github.blog/tag/security/feed/"
-    category: "SDL"
+    url: "https://blog.cloudflare.com/rss/"
+    category: "Web Security"
     enabled: true
 
-  - name: "Facebook Bug Bounty"
+  - name: "CrowdStrike Blog"
     type: "rss"
-    url: "https://www.facebook.com/whitehat/blog/"
-    category: "Bug Bounty"
+    url: "https://www.crowdstrike.com/blog/feed/"
+    category: "Endpoint Security"
     enabled: true
 
-  - name: "Google Project Zero"
+  - name: "Mandiant Blog"
     type: "rss"
-    url: "https://googleprojectzero.blogspot.com/feeds/posts/default"
-    category: "Vulnerability Research"
+    url: "https://www.mandiant.com/resources/blog/rss.xml"
+    category: "Threat Intelligence"
     enabled: true
 
-  - name: "Microsoft Vulnerability Research"
+  - name: "WeLiveSecurity (ESET)"
     type: "rss"
-    url: "https://msrc.microsoft.com/blog/feed"
-    category: "Vulnerability Research"
+    url: "https://www.welivesecurity.com/feed/"
+    category: "Malware Research"
     enabled: true
 
-  # 应用安全
-  - name: "AppSec Sentinel"
+  # AppSec & Bug Bounty
+  - name: "PortSwigger Blog"
     type: "rss"
-    url: "https://appsec-sentinel.com/feed/"
-    category: "AppSec"
-    enabled: true
-
-  - name: "NCC Group Blog"
-    type: "rss"
-    url: "https://research.nccgroup.com/feed/"
-    category: "AppSec"
-    enabled: true
-
-  - name: "Trail of Bits Blog"
-    type: "rss"
-    url: "https://blog.trailofbits.com/feed/"
-    category: "AppSec"
-    enabled: true
-
-  - name: "Doyensec Blog"
-    type: "rss"
-    url: "https://www.doyensec.com/feed/"
-    category: "AppSec"
-    enabled: true
-
-  - name: "Intigriti Blog"
-    type: "rss"
-    url: "https://blog.intigriti.com/rss/"
-    category: "Bug Bounty"
+    url: "https://portswigger.net/blog/rss"
+    category: "Web Security"
     enabled: true
 
   - name: "HackerOne Blog"
@@ -137,10 +102,55 @@ sources:
     category: "Bug Bounty"
     enabled: true
 
-  - name: "YesWeHack Blog"
+  - name: "GitHub Security Lab"
     type: "rss"
-    url: "https://www.yeswehack.com/blog/feed/"
-    category: "Bug Bounty"
+    url: "https://github.blog/tag/security/feed/"
+    category: "Code Security"
+    enabled: true
+
+  # SDL & AppSec Specific
+  - name: "OWASP"
+    type: "rss"
+    url: "https://owasp.org/feed.xml"
+    category: "AppSec Standard"
+    enabled: true
+
+  - name: "Netflix Tech Blog (Security)"
+    type: "rss"
+    url: "https://netflixtechblog.com/feed/tagged/security"
+    category: "DevSecOps"
+    enabled: true
+
+  - name: "Google Project Zero"
+    type: "rss"
+    url: "https://googleprojectzero.blogspot.com/feeds/posts/default"
+    category: "Vulnerability Research"
+    enabled: true
+
+# 国内优质源 (High Quality Chinese Sources)
+china_quality_sources:
+  - name: "Seebug Paper (知道创宇)"
+    type: "rss"
+    url: "https://paper.seebug.org/rss/"
+    category: "Vulnerability Research"
+    enabled: true
+
+  - name: "Tencent Keen Lab (腾讯科恩)"
+    type: "rss"
+    url: "https://keenlab.tencent.com/zh/atom.xml"
+    category: "Vulnerability Research"
+    enabled: true
+
+  - name: "SlowMist (慢雾科技)"
+    type: "rss"
+    url: "https://medium.com/feed/slowmist"
+    category: "Blockchain Security"
+    enabled: true
+
+  - name: "FreeBuf (安全资讯)"
+    type: "rss"
+    url: "https://www.freebuf.com/feed"
+    category: "Security News"
     enabled: true
 
 # AI 相关安全源
@@ -175,262 +185,55 @@ ai_security_sources:
     category: "AI Security"
     enabled: true
 
-  - name: "Pwning AI"
-    type: "rss"
-    url: "https://www.pwning.ai/rss/"
-    category: "AI Security"
-    enabled: true
-
-  - name: "Hidden Layer"
-    type: "rss"
-    url: "https://hiddenlayer.com/blog/feed/"
-    category: "AI Security"
-    enabled: true
-
-# 中国安全资讯源
-china_security_sources:
-  # 主流安全媒体
-  - name: "安全客"
-    type: "rss"
-    url: "https://www.anquanke.com/rss"
-    category: "安全资讯"
-    enabled: true
-
-  - name: "FreeBuf 安全"
-    type: "rss"
-    url: "https://www.freebuf.com/feed"
-    category: "安全资讯"
-    enabled: true
-
-  - name: "看雪论坛"
-    type: "html"
-    url: "https://bbs.kanxue.com/"
-    category: "二进制安全"
-    enabled: true
-
-  - name: "安全脉搏"
-    type: "rss"
-    url: "https://www.secpulse.com/rss.xml"
-    category: "安全资讯"
-    enabled: true
-
-  - name: "嘶吼"
-    type: "html"
-    url: "https://www.4hou.com/"
-    category: "安全资讯"
-    enabled: true
-
-  - name: "黑客派"
-    type: "html"
-    url: "https://hellogithub.com/showcase/security/"
-    category: "安全资讯"
-    enabled: true
-
-  # 企业安全
-  - name: "阿里云安全"
-    type: "rss"
-    url: "https://yq.aliyun.com/rss/security"
-    category: "云安全"
-    enabled: true
-
-  - name: "腾讯安全"
-    type: "html"
-    url: "https://security.tencent.com/"
-    category: "企业安全"
-    enabled: true
-
-  - name: "百度安全"
-    type: "html"
-    url: "https://baidu.bce.baidu.com/doc/Security/index.html"
-    category: "云安全"
-    enabled: true
-
-  - name: "华为安全"
-    type: "html"
-    url: "https://www.huaweicloud.com/security"
-    category: "云安全"
-    enabled: true
-
-  - name: "360 安全"
-    type: "html"
-    url: "https://360.cn/360/index.html"
-    category: "企业安全"
-    enabled: true
-
-  - name: "奇安信威胁情报"
-    type: "html"
-    url: "https://ti.qianxin.com/"
-    category: "威胁情报"
-    enabled: true
-
-  - name: "绿盟科技"
-    type: "html"
-    url: "https://www.nsfocus.com/"
-    category: "企业安全"
-    enabled: true
-
-  - name: "安恒信息"
-    type: "html"
-    url: "https://www.dbappsecurity.com.cn/"
-    category: "企业安全"
-    enabled: true
-
-  - name: "深信服安全"
-    type: "html"
-    url: "https://www.sangfor.com.cn/"
-    category: "企业安全"
-    enabled: true
-
-  # 研究机构
-  - name: "腾讯玄武实验室"
-    type: "html"
-    url: "https://www.tencent玄武实验室.com/"
-    category: "安全研究"
-    enabled: true
-
-  - name: "腾讯科恩实验室"
-    type: "html"
-    url: "https://keenlab.tencent.com/"
-    category: "安全研究"
-    enabled: true
-
-  - name: "阿里安全研究"
-    type: "html"
-    url: "https://security.alibaba.com/research"
-    category: "安全研究"
-    enabled: true
-
-  - name: "360 伏羲实验室"
-    type: "html"
-    url: "https://vul.360.cn/"
-    category: "安全研究"
-    enabled: true
-
-  - name: "长亭科技"
-    type: "html"
-    url: "https://chaitin.cn/"
-    category: "安全研究"
-    enabled: true
-
-  - name: "知道创宇"
-    type: "html"
-    url: "https://www.knownsec.com/"
-    category: "安全研究"
-    enabled: true
-
-  # 渗透测试
-  - name: "先知安全社区"
-    type: "html"
-    url: "https://xz.aliyun.com/"
-    category: "渗透测试"
-    enabled: true
-
-  - name: "安全头条"
-    type: "rss"
-    url: "https://www.sec-un.com/rss.xml"
-    category: "安全资讯"
-    enabled: true
-
-  - name: "互联网安全"
-    type: "rss"
-    url: "https://www.hackdig.com/rss.xml"
-    category: "安全资讯"
-    enabled: true
-
-  - name: "中国网络安全"
-    type: "html"
-    url: "https://www.cnns.net/"
-    category: "安全资讯"
-    enabled: true
-
-# Twitter/X 上的安全专家（需要特殊处理，暂保留）
-twitter_security_experts:
-  - name: "PortSwigger"
-    url: "https://twitter.com/PortSwigger"
-    category: "Web Security"
-    enabled: false
-
-  - name: "Hacker Fantastic"
-    url: "https://twitter.com/hackerfantastic"
-    category: "General"
-    enabled: false
-
-  - name: "Gabor Szappanos"
-    url: "https://twitter.com/gszappanos"
-    category: "Malware"
-    enabled: false
-
-  - name: "MalwareTech"
-    url: "https://twitter.com/MalwareTechBlog"
-    category: "Malware"
-    enabled: false
+# Twitter/X Sources (Currently Disabled due to API limitations)
+# twitter_security_experts:
+#   Note: Direct X scraping is unreliable without Enterprise API. 
+#   We are using their blogs/RSS where available.
 
 # 关键词过滤
 keywords:
   include:
-    # SDL 相关
+    # SDL, DevSecOps, AppSec
     - "SDL"
     - "secure development"
     - "DevSecOps"
     - "secure coding"
-    - "code security"
     - "application security"
     - "appsec"
-    
-    # 安全工具
+    - "software supply chain"
+    - "threat model"
+    - "code review"
+    - "static analysis"
     - "SAST"
     - "DAST"
-    - "IAST"
-    - "SCA"
-    - "AST"
-    - "penetration testing"
-    - "pen test"
-    - "vulnerability scanning"
-    - "bug bounty"
+    - "secret management"
+    - "container security"
+    - "security"
+    - "cyber"
+    - "attack"
+    - "breach"
     
-    # 威胁研究
+    # Vulnerabilities & Threats
     - "vulnerability"
     - "zero-day"
     - "0day"
     - "CVE"
+    - "RCE"
     - "exploit"
-    - "threat"
-    - "threat intelligence"
     - "malware"
     - "ransomware"
+    - "apt group"
     
-    # AI 安全
+    # AI Security
     - "AI security"
     - "LLM security"
     - "prompt injection"
     - "adversarial attack"
-    - "model safety"
+    - "model poisoning"
     - "AI safety"
-    - "machine learning security"
-    - "deep learning security"
-    
-    # 中国关键词
-    - "安全开发"
-    - "应用安全"
-    - "漏洞分析"
-    - "漏洞挖掘"
-    - "渗透测试"
-    - "威胁情报"
-    - "恶意代码"
-    - "勒索软件"
-    - "0day"
-    - "零日"
-    - "安全研究"
-    - "攻防演练"
-    - "红蓝对抗"
-    - "云安全"
-    - "网络安全"
-    - "数据安全"
-    - "隐私保护"
     
   exclude:
     - "advertisement"
     - "sponsored"
-    - "广告"
-    - "赞助"
-    - "推广"
+    - "promo"
+    - "webinar registration"

@@ -4,13 +4,16 @@ import requests
 from typing import List, Dict
 from utils.logger import get_logger
 
+from config import config
+
 class LarkNotifier:
     """飞书通知器 - 使用 Webhook 发送"""
     
     def __init__(self):
         self.logger = get_logger('notifier')
-        self.webhook_url = os.getenv('LARK_WEBHOOK_URL')
-        self.webhook_key = os.getenv('LARK_WEBHOOK_KEY')
+        lark_conf = config.get('lark_config', {})
+        self.webhook_url = lark_conf.get('webhook_url') or os.getenv('LARK_WEBHOOK_URL')
+        self.webhook_key = lark_conf.get('webhook_key') or os.getenv('LARK_WEBHOOK_KEY')
         
     def send_daily_report(self, articles: List[Dict]):
         """发送日报到飞书"""
@@ -55,6 +58,13 @@ class LarkNotifier:
         
         if response.status_code != 200:
             raise Exception(f"Webhook request failed: {response.text}")
+            
+        try:
+            resp_json = response.json()
+            if resp_json.get('code') != 0:
+                raise Exception(f"Lark API Error: code={resp_json.get('code')}, msg={resp_json.get('msg')}")
+        except ValueError:
+            pass # Non-JSON response, rely on status code
     
     def _send_message(self, message: str):
         """发送简单文本消息"""
@@ -122,13 +132,6 @@ class LarkNotifier:
                 "text": {
                     "content": f"📊 共爬取 {total} 篇文章 | 已为您推荐最相关的 {min(total, 10)} 篇",
                     "tag": "lark_md"
-                },
-                "extra": {
-                    "tag": "div",
-                    "text": {
-                        "content": f"共爬取 {total} 篇文章",
-                        "tag": "lark_md"
-                    }
                 }
             },
             {"tag": "hr"}
@@ -196,6 +199,25 @@ class LarkNotifier:
             })
             
             for point in key_points[:4]:  # 最多显示4个关键点
+                elements.append({
+                    "tag": "div",
+                    "text": {
+                        "content": f"• {point}",
+                        "tag": "lark_md"
+                    }
+                })
+        
+        # SDL 落地建议 (New Section)
+        sdl_advice = article.get('sdl_advice', [])
+        if sdl_advice:
+             elements.append({
+                "tag": "div",
+                "text": {
+                    "content": "🏗️ **SDL 落地场景**",
+                    "tag": "lark_md"
+                }
+            })
+             for point in sdl_advice:
                 elements.append({
                     "tag": "div",
                     "text": {

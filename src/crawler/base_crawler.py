@@ -55,9 +55,16 @@ class RSSCrawler(BaseCrawler):
     def fetch(self) -> List[Dict]:
         """获取 RSS 文章列表"""
         try:
-            feed = feedparser.parse(self.url)
+            # Fix SSL issues on Mac by using requests instead of urllib (via feedparser)
+            response = requests.get(self.url, headers=self.headers, timeout=30)
+            response.raise_for_status()
+            
+            feed = feedparser.parse(response.content)
             articles = []
             
+            if feed.bozo:
+                print(f"Warning parsing feed {self.url}: {feed.bozo_exception}")
+
             for entry in feed.entries[:20]:
                 article = {
                     'source': self.name,
