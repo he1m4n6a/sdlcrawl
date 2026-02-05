@@ -1,0 +1,81 @@
+# 安全资讯源配置
+
+# 安全博客和媒体
+sources:
+  - name: "OWASP Blog"
+    type: "rss"
+    url: "https://owasp.org/blog/feed/"
+    category: "SDL"
+    enabled: true
+    
+  - name: "PortSwigger Blog"
+    type: "rss"
+    url: "https://portswigger.net/blog/rss"
+    category: "Web Security"
+    enabled: true
+    
+  - name: "The Hacker News"
+    type: "rss"
+    url: "https://thehackernews.com/feeds/posts/default"
+    category: "General"
+    enabled: true
+    
+  - name: "Krebs on Security"
+    type: "rss"
+    url: "https://krebsonsecurity.com/feed/"
+    category: "General"
+    enabled: true
+
+  - name: "Google Security Blog"
+    type: "rss"
+    url: "https://security.googleblog.com/feeds/posts/default"
+    category: "SDL"
+    enabled: true
+    
+  - name: "Microsoft Security Blog"
+    type: "rss"
+    url: "https://www.microsoft.com/en-us/security/blog/feed/"
+    category: "SDL"
+    enabled: true
+
+# AI 相关安全源
+ai_security_sources:
+  - name: "OpenAI Security"
+    type: "rss"
+    url: "https://openai.com/blog/rss.xml"
+    category: "AI Security"
+    enabled: true
+    
+  - name: "Anthropic Safety"
+    type: "html"
+    url: "https://www.anthropic.com/index"
+    category: "AI Safety"
+    enabled: true
+
+# 关键词过滤
+keywords:
+  include:
+    - "SDL"
+    - "security"
+    - "AI"
+    - "LLM"
+    - "application security"
+    - "DevSecOps"
+    - "secure development"
+    - "vulnerability"
+    - "penetration testing"
+    - "threat modeling"
+    - "code review"
+    - "AST"
+    - "SAST"
+    - "DAST"
+    - "IAST"
+    - "SCA"
+    - "AI security"
+    - "prompt injection"
+    - "model safety"
+    - "adversarial attack"
+    
+  exclude:
+    - "advertisement"
+    - "sponsored"
