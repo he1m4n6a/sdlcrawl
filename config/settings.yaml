@@ -2,6 +2,7 @@
 max_articles: 10
 log_level: "INFO"
 output_dir: "data"
+schedule_time: "09:00" # Daily run time (24h format)
 
 # Notification Settings
 lark_config:
