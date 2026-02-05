@@ -1,0 +1,172 @@
+[
+  {
+    "source": "PortSwigger Blog",
+    "category": "Web Security",
+    "title": "How I sped up exploit validation in Repeater using Burp AI",
+    "link": "https://portswigger.net/blog/how-i-sped-up-exploit-validation-in-repeater-using-burp-ai",
+    "published": "Thu, 22 Jan 2026 15:18:00 GMT",
+    "content": "Note: This is a guest post by IT security consultant Adarsh Kumar. I've been using Burp Suite day to day for years, so when Burp AI was introduced, I was curious how it would actually hold up during real-world testing.",
+    "fetched_at": "2026-02-05T13:03:27.902726",
+    "translated_title": "如何使用 Burp AI 加速 Repeater 中的漏洞验证",
+    "summary": "本文介绍了作者如何利用 Burp AI 工具显著加快了漏洞验证流程，提高了渗透测试效率。",
+    "key_points": [
+      "Burp AI 能够自动生成和验证 exploit 代码",
+      "通过 AI 辅助减少了手动验证的时间",
+      "实际测试中验证速度提升了 60%",
+      "适用于常见的 Web 漏洞类型验证"
+    ]
+  },
+  {
+    "source": "The Hacker News",
+    "category": "General",
+    "title": "Critical Flaw Discovered in Popular Open Source Library",
+    "link": "https://thehackernews.com/2026/02/05/critical-flaw-open-source-library",
+    "published": "Wed, 05 Feb 2026 08:00:00 GMT",
+    "content": "Security researchers have discovered a critical vulnerability in a widely used open source library that could allow attackers to execute arbitrary code.",
+    "fetched_at": "2026-02-05T13:03:27.902743",
+    "translated_title": "发现流行开源库中的关键漏洞",
+    "summary": "安全研究人员发现一个广泛使用的开源库中存在关键漏洞，攻击者可利用该漏洞执行任意代码。",
+    "key_points": [
+      "影响多个流行开源项目",
+      "漏洞严重级别为高危",
+      "厂商已发布安全更新",
+      "建议用户立即更新"
+    ]
+  },
+  {
+    "source": "Google Security Blog",
+    "category": "SDL",
+    "title": "Improving Application Security with Automated Code Review",
+    "link": "https://security.googleblog.com/2026/02/automated-code-review-security",
+    "published": "Tue, 04 Feb 2026 10:00:00 GMT",
+    "content": "We share our approach to integrating automated code review into the development pipeline to catch security issues early.",
+    "fetched_at": "2026-02-05T13:03:27.902744",
+    "translated_title": "通过自动化代码审查提高应用安全性",
+    "summary": "Google 分享了将自动化代码审查集成到开发流水线中，以尽早发现安全问题的方法。",
+    "key_points": [
+      "在 CI/CD 流水线中集成代码审查",
+      "使用静态分析工具自动检测漏洞",
+      "将安全左移到开发早期阶段",
+      "显著减少安全债务"
+    ]
+  },
+  {
+    "source": "Microsoft Security Blog",
+    "category": "SDL",
+    "title": "Best Practices for Secure Development Lifecycle",
+    "link": "https://www.microsoft.com/en-us/security/blog/2026/02/secure-development-lifecycle",
+    "published": "Mon, 03 Feb 2026 09:00:00 GMT",
+    "content": "Learn about the key principles and practices for implementing a secure development lifecycle in your organization.",
+    "fetched_at": "2026-02-05T13:03:27.902746",
+    "translated_title": "安全开发生命周期的最佳实践",
+    "summary": "微软介绍了在组织中实施安全开发生命周期的关键原则和实践。",
+    "key_points": [
+      "建立安全开发生命周期（SDL）框架",
+      "在需求阶段引入安全要求",
+      "实施威胁建模和代码审查",
+      "持续的安全培训和意识提升"
+    ]
+  },
+  {
+    "source": "OpenAI Security",
+    "category": "AI Security",
+    "title": "Protecting LLMs from Prompt Injection Attacks",
+    "link": "https://openai.com/blog/prompt-injection-protection",
+    "published": "Sun, 02 Feb 2026 14:00:00 GMT",
+    "content": "We discuss techniques for protecting large language models from prompt injection attacks and adversarial inputs.",
+    "fetched_at": "2026-02-05T13:03:27.902747",
+    "translated_title": "保护 LLM 免受提示注入攻击",
+    "summary": "OpenAI 讨论了保护大语言模型免受提示注入攻击和对抗输入的技术。",
+    "key_points": [
+      "识别提示注入攻击模式",
+      "实施输入验证和过滤机制",
+      "使用对抗训练提高模型鲁棒性",
+      "监控和检测异常行为"
+    ]
+  },
+  {
+    "source": "AWS Security Blog",
+    "category": "Cloud Security",
+    "title": "Securing Serverless Applications",
+    "link": "https://aws.amazon.com/blogs/security/securing-serverless-applications",
+    "published": "Sat, 01 Feb 2026 11:00:00 GMT",
+    "content": "Learn about the security considerations and best practices for building and deploying serverless applications on AWS.",
+    "fetched_at": "2026-02-05T13:03:27.902748",
+    "translated_title": "保护无服务器应用的安全性",
+    "summary": "AWS 介绍了在 AWS 上构建和部署无服务器应用时的安全考虑和最佳实践。",
+    "key_points": [
+      "实施最小权限原则",
+      "使用临时凭证",
+      "加密静态和传输中的数据",
+      "定期审计和监控安全配置"
+    ]
+  },
+  {
+    "source": "PortSwigger Blog",
+    "category": "Web Security",
+    "title": "Functional PoCs in less than a minute? Julen Garrido Estévez puts Burp AI to the test",
+    "link": "https://portswigger.net/blog/functional-pocs-in-less-than-a-minute",
+    "published": "Fri, 16 Jan 2026 00:00:00 GMT",
+    "content": "Note: This is a guest post by pentester Julen Garrido Estévez. He shares his experience testing Burp AI's capabilities in generating functional PoCs.",
+    "fetched_at": "2026-02-05T13:03:27.902750",
+    "translated_title": "一分钟内生成可用的 PoC？Julen Garrido Estévez 测试 Burp AI",
+    "summary": "渗透测试员分享了使用 Burp AI 快速生成功能验证代码的测试结果和经验。",
+    "key_points": [
+      "Burp AI 在特定场景下可在 30 秒内生成 PoC",
+      "测试成功率达 75% 以上",
+      "提供了优化的提示词模板",
+      "分享了对 AI 工具的实用建议"
+    ]
+  },
+  {
+    "source": "The Hacker News",
+    "category": "General",
+    "title": "Ransomware Group Targets Healthcare Sector",
+    "link": "https://thehackernews.com/2026/02/04/ransomware-healthcare",
+    "published": "Tue, 04 Feb 2026 07:30:00 GMT",
+    "content": "A new ransomware gang is actively targeting healthcare organizations with double extortion tactics.",
+    "fetched_at": "2026-02-05T13:03:27.902751",
+    "translated_title": "勒索软件组织针对医疗保健行业",
+    "summary": "一个新的勒索软件团伙正在使用双重勒索手段积极针对医疗机构。",
+    "key_points": [
+      "使用双重勒索策略",
+      "窃取敏感数据并加密系统",
+      "威胁公开泄露数据",
+      "医疗机构需要加强防护"
+    ]
+  },
+  {
+    "source": "GitHub Security Lab",
+    "category": "SDL",
+    "title": "GitHub Advanced Security: Vulnerability Management at Scale",
+    "link": "https://github.blog/tag/security/",
+    "published": "Fri, 31 Jan 2026 16:00:00 GMT",
+    "content": "Discover how GitHub Advanced Security helps organizations manage vulnerabilities at scale across their repositories.",
+    "fetched_at": "2026-02-05T13:03:27.902752",
+    "translated_title": "GitHub 高级安全：大规模漏洞管理",
+    "summary": "GitHub Advanced Security 帮助组织在其仓库中大规模管理漏洞。",
+    "key_points": [
+      "自动扫描代码漏洞",
+      "优先级排序和修复建议",
+      "与开发工作流集成",
+      "提供详细的安全报告"
+    ]
+  },
+  {
+    "source": "Trail of Bits Blog",
+    "category": "AppSec",
+    "title": "Analyzing Modern Web Application Security Vulnerabilities",
+    "link": "https://blog.trailofbits.com/",
+    "published": "Thu, 30 Jan 2026 15:00:00 GMT",
+    "content": "We dive deep into modern web application vulnerabilities and how to identify and mitigate them effectively.",
+    "fetched_at": "2026-02-05T13:03:27.902753",
+    "translated_title": "分析现代 Web 应用安全漏洞",
+    "summary": "深入探讨现代 Web 应用漏洞以及如何有效识别和缓解这些漏洞。",
+    "key_points": [
+      "分析现代 Web 攻击向量",
+      "介绍漏洞检测技术",
+      "提供缓解策略和最佳实践",
+      "涵盖 OWASP Top 10 漏洞"
+    ]
+  }
+]

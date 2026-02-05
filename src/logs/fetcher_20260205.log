@@ -115,3 +115,30 @@
 2026-02-05 12:38:47,524 - fetcher - INFO - Fetched 6 articles from Microsoft Security Blog
 2026-02-05 12:38:48,776 - fetcher - INFO - Fetched 8 articles from AWS Security Blog
 2026-02-05 12:38:49,101 - fetcher - INFO - Fetched 5 articles from GitHub Security Lab
+2026-02-05 12:58:32,607 - fetcher - INFO - Fetched 0 articles from OWASP Blog
+2026-02-05 12:58:33,504 - fetcher - INFO - Fetched 10 articles from PortSwigger Blog
+2026-02-05 12:58:35,869 - fetcher - INFO - Fetched 12 articles from The Hacker News
+2026-02-05 12:58:36,374 - fetcher - INFO - Fetched 10 articles from Krebs on Security
+2026-02-05 12:58:37,103 - fetcher - INFO - Fetched 10 articles from Dark Reading
+2026-02-05 12:58:37,867 - fetcher - INFO - Fetched 0 articles from BleepingComputer
+2026-02-05 12:58:38,825 - fetcher - INFO - Fetched 6 articles from SecurityWeek
+2026-02-05 12:58:39,150 - fetcher - INFO - Fetched 9 articles from The Register Security
+2026-02-05 12:58:42,930 - fetcher - INFO - Fetched 7 articles from Threatpost
+2026-02-05 12:58:45,072 - fetcher - INFO - Fetched 20 articles from Google Security Blog
+2026-02-05 12:58:46,241 - fetcher - INFO - Fetched 6 articles from Microsoft Security Blog
+2026-02-05 12:58:47,343 - fetcher - INFO - Fetched 8 articles from AWS Security Blog
+2026-02-05 12:58:48,177 - fetcher - INFO - Fetched 5 articles from GitHub Security Lab
+2026-02-05 12:58:48,358 - fetcher - INFO - Fetched 0 articles from Facebook Bug Bounty
+2026-02-05 12:59:56,125 - fetcher - INFO - Fetched 0 articles from Google Project Zero
+2026-02-05 12:59:57,593 - fetcher - INFO - Fetched 0 articles from Microsoft Vulnerability Research
+2026-02-05 12:59:59,271 - fetcher - INFO - Fetched 0 articles from AppSec Sentinel
+2026-02-05 13:00:04,382 - fetcher - INFO - Fetched 0 articles from NCC Group Blog
+2026-02-05 13:00:05,593 - fetcher - INFO - Fetched 19 articles from Trail of Bits Blog
+2026-02-05 13:00:09,746 - fetcher - INFO - Fetched 0 articles from Doyensec Blog
+2026-02-05 13:00:11,128 - fetcher - INFO - Fetched 0 articles from Intigriti Blog
+2026-02-05 13:00:11,672 - fetcher - INFO - Fetched 0 articles from HackerOne Blog
+2026-02-05 13:00:12,514 - fetcher - INFO - Fetched 0 articles from YesWeHack Blog
+2026-02-05 13:00:13,928 - fetcher - INFO - Fetched 4 articles from OpenAI Security
+2026-02-05 13:00:23,238 - fetcher - INFO - Fetched 0 articles from Anthropic Safety
+2026-02-05 13:00:25,848 - fetcher - INFO - Fetched 3 articles from Google DeepMind Safety
+2026-02-05 13:00:27,790 - fetcher - INFO - Fetched 0 articles from Microsoft AI Safety
