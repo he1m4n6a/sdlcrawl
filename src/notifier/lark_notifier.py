@@ -1,171 +1,64 @@
 import os
 import json
+import requests
 from typing import List, Dict
-from lark_oapi.api.im.v1 import CreateMessageRequest, CreateMessageRequestBody, Message
-from lark_oapi.api.auth.v3 import InternalTenantAccessTokenRequest
-from lark_oapi import Client
 from utils.logger import get_logger
 
 class LarkNotifier:
-    """飞书通知器"""
+    """飞书通知器 - 使用 Webhook 发送"""
     
     def __init__(self):
         self.logger = get_logger('notifier')
-        self.app_id = os.getenv('LARK_APP_ID')
-        self.app_secret = os.getenv('LARK_APP_SECRET')
-        self.user_id = os.getenv('LARK_USER_ID')
-        self.access_token = None
+        self.webhook_url = os.getenv('LARK_WEBHOOK_URL')
+        self.webhook_key = os.getenv('LARK_WEBHOOK_KEY')
         
     def send_daily_report(self, articles: List[Dict]):
         """发送日报到飞书"""
         try:
-            self._get_access_token()
-            
             if not articles:
-                message = "今日未获取到新的安全文章。"
-                self._send_message(message)
+                self._send_message("今日未获取到新的安全文章。")
                 self.logger.info("Sent empty report to Lark")
                 return
             
-            # 构建富文本消息
+            # 构建卡片消息
             card_content = self._build_report_card(articles)
-            self._send_card_message(card_content)
+            self._send_webhook(card_content)
             
             self.logger.info(f"Sent daily report with {len(articles)} articles to Lark")
             
         except Exception as e:
             self.logger.error(f"Error sending report to Lark: {e}")
     
-    def _get_access_token(self):
-        """获取访问令牌"""
-        client = Client(self.app_id, self.app_secret)
-        request = InternalTenantAccessTokenRequest()
+    def _send_webhook(self, card_content: dict):
+        """通过 Webhook 发送卡片消息"""
+        if not self.webhook_url:
+            raise Exception("LARK_WEBHOOK_URL not configured")
         
-        response = client.auth.v3.tenant_access_token.internal(request)
+        headers = {
+            'Content-Type': 'application/json'
+        }
         
-        if response.code == 0:
-            self.access_token = response.tenant_access_token
-        else:
-            raise Exception(f"Failed to get access token: {response.msg}")
+        if self.webhook_key:
+            headers['X-Lark-Request-Key'] = self.webhook_key
+        
+        payload = {
+            "msg_type": "interactive",
+            "card": card_content
+        }
+        
+        response = requests.post(
+            self.webhook_url,
+            json=payload,
+            headers=headers,
+            timeout=30
+        )
+        
+        if response.status_code != 200:
+            raise Exception(f"Webhook request failed: {response.text}")
     
     def _send_message(self, message: str):
-        """发送文本消息"""
-        client = Client(self.app_id, self.app_secret)
-        client.auth.v3.tenant_access_token.internal_set(self.access_token)
-        
-        request = CreateMessageRequest()
-        request.receive_id_type = "open_id"
-        request.receive_id = self.user_id
-        request.msg_type = "text"
-        request.content = json.dumps({"text": message})
-        
-        response = client.im.v1.message.create(request)
-        
-        if response.code != 0:
-            raise Exception(f"Failed to send message: {response.msg}")
-    
-    def _send_card_message(self, card_content: dict):
-        """发送卡片消息"""
-        client = Client(self.app_id, self.app_secret)
-        client.auth.v3.tenant_access_token.internal_set(self.access_token)
-        
-        request = CreateMessageRequest()
-        request.receive_id_type = "open_id"
-        request.receive_id = self.user_id
-        request.msg_type = "interactive"
-        request.content = json.dumps(card_content)
-        
-        response = client.im.v1.message.create(request)
-        
-        if response.code != 0:
-            raise Exception(f"Failed to send card message: {response.msg}")
-    
-    def _build_report_card(self, articles: List[Dict]) -> Dict:
-        """构建报告卡片"""
-        elements = [
-            {
-                "tag": "div",
-                "text": {
-                    "content": f"今日安全文章日报（共 {len(articles)} 篇）",
-                    "tag": "lark_md"
-                }
-            },
-            {
-                "tag": "hr"
-            }
-        ]
-        
-        for i, article in enumerate(articles[:10], 1):  # 最多显示10篇
-            title = article.get('translated_title', article.get('title', ''))
-            summary = article.get('summary', '')
-            link = article.get('link', '')
-            category = article.get('category', '')
-            
-            # 文章标题
-            elements.append({
-                "tag": "div",
-                "text": {
-                    "content": f"**{i}. {title}**",
-                    "tag": "lark_md"
-                }
-            })
-            
-            # 分类标签
-            if category:
-                elements.append({
-                    "tag": "div",
-                    "text": {
-                        "content": f"分类: {category}",
-                        "tag": "lark_md"
-                    }
-                })
-            
-            # 摘要
-            if summary:
-                elements.append({
-                    "tag": "div",
-                    "text": {
-                        "content": f"摘要: {summary}",
-                        "tag": "lark_md"
-                    }
-                })
-            
-            # 关键点
-            key_points = article.get('key_points', [])
-            if key_points:
-                points_text = '\n'.join([f"  • {point}" for point in key_points])
-                elements.append({
-                    "tag": "div",
-                    "text": {
-                        "content": f"关键点:\n{points_text}",
-                        "tag": "lark_md"
-                    }
-                })
-            
-            # 原始链接
-            if link:
-                elements.append({
-                    "tag": "action",
-                    "actions": [
-                        {
-                            "tag": "button",
-                            "text": {
-                                "content": "查看原文",
-                                "tag": "plain_text"
-                            },
-                            "type": "primary",
-                            "url": link
-                        }
-                    ]
-                })
-            
-            # 分隔线
-            if i < min(len(articles), 10):
-                elements.append({
-                    "tag": "hr"
-                })
-        
-        return {
+        """发送简单文本消息"""
+        self._send_webhook({
             "config": {
                 "wide_screen_mode": True
             },
@@ -176,5 +69,166 @@ class LarkNotifier:
                     "tag": "plain_text"
                 }
             },
+            "elements": [
+                {
+                    "tag": "div",
+                    "text": {
+                        "content": message,
+                        "tag": "lark_md"
+                    }
+                }
+            ]
+        })
+    
+    def _build_report_card(self, articles: List[Dict]) -> Dict:
+        """构建精美的报告卡片"""
+        elements = []
+        
+        # 头部统计信息
+        elements.extend(self._build_header_elements(len(articles)))
+        
+        # 文章列表
+        for i, article in enumerate(articles[:10], 1):
+            elements.extend(self._build_article_elements(i, article))
+            if i < min(len(articles), 10):
+                elements.append({"tag": "hr"})
+        
+        # 底部信息
+        elements.append(self._build_footer_elements())
+        
+        return {
+            "config": {
+                "wide_screen_mode": True
+            },
+            "header": {
+                "template": "blue",
+                "title": {
+                    "content": "🛡️ SDL 安全日报",
+                    "tag": "plain_text"
+                },
+                "subtitle": {
+                    "content": f"今日精选 {len(articles)} 篇高质量文章",
+                    "tag": "plain_text"
+                }
+            },
             "elements": elements
+        }
+    
+    def _build_header_elements(self, total: int) -> List[Dict]:
+        """构建头部元素"""
+        return [
+            {
+                "tag": "div",
+                "text": {
+                    "content": f"📊 共爬取 {total} 篇文章 | 已为您推荐最相关的 {min(total, 10)} 篇",
+                    "tag": "lark_md"
+                },
+                "extra": {
+                    "tag": "div",
+                    "text": {
+                        "content": f"共爬取 {total} 篇文章",
+                        "tag": "lark_md"
+                    }
+                }
+            },
+            {"tag": "hr"}
+        ]
+    
+    def _build_article_elements(self, index: int, article: Dict) -> List[Dict]:
+        """构建单篇文章元素"""
+        title = article.get('translated_title', article.get('title', ''))
+        link = article.get('link', '')
+        category = article.get('category', 'N/A')
+        summary = article.get('summary', '')
+        key_points = article.get('key_points', [])
+        source = article.get('source', 'N/A')
+        
+        elements = []
+        
+        # 序号和标题
+        elements.append({
+            "tag": "div",
+            "text": {
+                "content": f"**{index}. {title}**",
+                "tag": "lark_md"
+            }
+        })
+        
+        # 来源和分类标签
+        elements.append({
+            "tag": "div",
+            "fields": [
+                {
+                    "is_short": True,
+                    "text": {
+                        "content": f"📰 {source}",
+                        "tag": "lark_md"
+                    }
+                },
+                {
+                    "is_short": True,
+                    "text": {
+                        "content": f"🏷️ {category}",
+                        "tag": "lark_md"
+                    }
+                }
+            ]
+        })
+        
+        # 摘要（使用折叠卡片）
+        if summary:
+            elements.append({
+                "tag": "div",
+                "text": {
+                    "content": f"📝 {summary}",
+                    "tag": "lark_md"
+                }
+            })
+        
+        # 关键点（使用折叠卡片）
+        if key_points:
+            elements.append({
+                "tag": "div",
+                "text": {
+                    "content": "🎯 **关键要点**",
+                    "tag": "lark_md"
+                }
+            })
+            
+            for point in key_points[:4]:  # 最多显示4个关键点
+                elements.append({
+                    "tag": "div",
+                    "text": {
+                        "content": f"• {point}",
+                        "tag": "lark_md"
+                    }
+                })
+        
+        # 查看原文按钮
+        if link:
+            elements.append({
+                "tag": "action",
+                "actions": [
+                    {
+                        "tag": "button",
+                        "text": {
+                            "content": "🔗 查看原文",
+                            "tag": "plain_text"
+                        },
+                        "type": "primary",
+                        "url": link
+                    }
+                ]
+            })
+        
+        return elements
+    
+    def _build_footer_elements(self) -> Dict:
+        """构建底部元素"""
+        return {
+            "tag": "div",
+            "text": {
+                "content": "✨ _由 SDL 安全文章爬取系统自动生成_",
+                "tag": "lark_md"
+            }
         }
